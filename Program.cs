@@ -1,4 +1,5 @@
 using HandsOnCQRS.Context;
+using HandsOnCQRS.Repositories;
 using HandsOnCQRS.Services;
 using System.Reflection;
 
@@ -11,6 +12,7 @@ builder.Services.AddControllers().ConfigureApiBehaviorOptions(options =>
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<ApplicationDbContext>();
+builder.Services.AddScoped<IPersonRepository, PersonRepository>();
 builder.Services.AddScoped<IPersonService, PersonService>();
 builder.Services.AddMediatR(configuration => configuration.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly()));
 
